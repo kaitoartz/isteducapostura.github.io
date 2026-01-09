@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISTEduca - Detección de Poses con IA</title>
+  <link rel="stylesheet" href="media.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Header con Logo -->
+    <header class="header">
+      <div class="logo-container">
+        <svg class="logo" viewBox="0 0 1600 500" xmlns="http://www.w3.org/2000/svg">
+          <!-- Letra i (morado) -->
+          <circle cx="107" cy="191" r="27" fill="#C74398"/>
+          <path d="M85,240 Q85,230 95,230 L115,230 Q125,230 125,240 L125,410 Q125,420 115,420 L95,420 Q85,420 85,410 Z" fill="#4A3168"/>
+          
+          <!-- ist (morado) -->
+          <path d="M180,320 Q180,300 200,290 Q230,280 250,280 Q270,280 280,290 L280,320 Q280,300 300,285 Q320,270 350,270 Q370,270 385,280 L385,240 Q385,230 395,230 L415,230 Q425,230 425,240 L425,410 Q425,420 415,420 L395,420 Q385,420 385,410 L385,340 Q385,325 370,320 Q360,318 355,318 Q345,318 340,325 Q335,332 335,340 L335,410 Q335,420 325,420 L305,420 Q295,420 295,410 L295,340 Q295,325 280,320 Q270,318 265,318 Q255,318 250,325 Q245,332 245,340 L245,410 Q245,420 235,420 L215,420 Q205,420 205,410 L205,320 Q205,310 215,310 L175,310 Q165,310 165,320 L165,250 Q165,240 175,240 L195,240 Q205,240 205,250 L205,285 Q215,280 230,280 Q150,280 180,320 Z" fill="#4A3168" transform="translate(-20,0)"/>
+          
+          <!-- educa (rosa) -->
+          <path d="M560,310 Q560,280 585,265 Q610,250 640,250 Q680,250 705,275 Q730,300 730,340 L730,360 L590,360 Q595,380 615,390 Q630,398 650,398 Q675,398 690,385 L715,405 Q685,430 650,430 Q610,430 585,405 Q560,380 560,340 Q560,340 560,310 M640,285 Q620,285 605,298 Q590,311 590,330 L690,330 Q690,310 675,297 Q660,285 640,285 Z" fill="#C74398"/>
+          
+          <path d="M800,240 Q800,230 810,230 L830,230 Q840,230 840,240 L840,285 Q855,265 875,257 Q895,250 920,250 Q965,250 992,277 Q1020,305 1020,350 L1020,410 Q1020,420 1010,420 L990,420 Q980,420 980,410 L980,350 Q980,320 962,302 Q945,285 920,285 Q890,285 870,305 Q850,325 850,360 L850,410 Q850,420 840,420 L820,420 Q810,420 810,410 L810,240 Z" fill="#C74398"/>
+          
+          <path d="M1100,320 Q1100,290 1125,270 Q1150,250 1185,250 Q1225,250 1250,275 Q1275,300 1275,340 Q1275,380 1250,405 Q1225,430 1185,430 Q1150,430 1125,410 L1125,480 Q1125,490 1115,490 L1095,490 Q1085,490 1085,480 L1085,260 Q1085,250 1095,250 L1115,250 Q1125,250 1125,260 L1125,270 M1185,285 Q1160,285 1142,303 Q1125,320 1125,345 Q1125,370 1142,387 Q1160,405 1185,405 Q1210,405 1227,387 Q1245,370 1245,345 Q1245,320 1227,303 Q1210,285 1185,285 Z" fill="#C74398"/>
+          
+          <path d="M1340,320 Q1340,290 1365,270 Q1390,250 1425,250 Q1470,250 1497,277 Q1525,305 1525,350 L1525,410 Q1525,420 1515,420 L1495,420 Q1485,420 1485,410 L1485,350 Q1485,320 1467,302 Q1450,285 1425,285 Q1395,285 1375,305 Q1355,325 1355,360 L1355,410 Q1355,420 1345,420 L1325,420 Q1315,420 1315,410 L1315,260 Q1315,250 1325,250 L1345,250 Q1355,250 1355,260 L1355,270 Z" fill="#C74398"/>
+          
+          <!-- Puntos decorativos -->
+          <circle cx="1397" cy="100" r="18" fill="#FF5733"/>
+          <circle cx="1333" cy="125" r="24" fill="#FFA500"/>
+          <circle cx="1465" cy="118" r="28" fill="#FFD700"/>
+          <circle cx="1315" cy="185" r="18" fill="#4DD0E1"/>
+          <circle cx="1402" cy="190" r="22" fill="#9575CD"/>
+          <circle cx="1490" cy="180" r="20" fill="#4DD0E1"/>
+          <circle cx="1475" cy="235" r="16" fill="#FF5733"/>
+          <circle cx="1415" cy="260" r="12" fill="#FFD700"/>
+        </svg>
+      </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main id="mainContent" class="main-content">
+      <div class="intro-section">
+        <h1 class="main-title">🎯 Detección de Poses con Inteligencia Artificial</h1>
+        <p class="intro-text">
+          Bienvenido a esta práctica interactiva donde aprenderás cómo funciona la <strong>visión por computadora</strong> 
+          y la <strong>detección de puntos clave del cuerpo humano</strong> usando MediaPipe de Google.
+        </p>
+      </div>
+
+      <!-- Sección Educativa -->
+      <div class="educational-section">
+        <div class="info-card">
+          <div class="card-icon">🤖</div>
+          <h3>¿Qué es MediaPipe?</h3>
+          <p>MediaPipe es una herramienta de Google que utiliza redes neuronales para detectar 33 puntos clave del cuerpo humano en tiempo real.</p>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">🎓</div>
+          <h3>¿Cómo funciona?</h3>
+          <p>Usa algoritmos de aprendizaje profundo (Deep Learning) entrenados con miles de imágenes para reconocer la pose humana.</p>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">💡</div>
+          <h3>Aplicaciones Reales</h3>
+          <p>Fitness apps, videojuegos, realidad aumentada, análisis deportivo, rehabilitación física y más.</p>
+        </div>
+      </div>
+
+      <!-- Botón Principal -->
+      <div class="camera-section" id="cameraSection">
+        <div class="instruction-box">
+          <h2>¡Hora de Practicar! 🚀</h2>
+          <p>Haz clic en el botón para activar tu cámara y ver la detección de poses en tiempo real.</p>
+          <div class="tips">
+            <p><strong>Tips:</strong></p>
+            <ul>
+              <li>Asegúrate de tener buena iluminación</li>
+              <li>Colócate a 1-2 metros de la cámara</li>
+              <li>Prueba diferentes poses y movimientos</li>
+            </ul>
+          </div>
+        </div>
+        
+        <button id="webcamButton" class="camera-button">
+          <span class="button-icon">📷</span>
+          <span class="button-text">Activar Cámara</span>
+        </button>
+      </div>
+
+      <!-- Vista de la Cámara -->
+      <div id="videoContainer" class="video-container hidden">
+        <div class="video-wrapper">
+          <video id="webcam" autoplay playsinline></video>
+          <canvas id="output_canvas"></canvas>
+        </div>
+        
+        <div class="pose-info" id="poseInfo">
+          <h3>📊 Información de Detección</h3>
+          <div class="stats">
+            <div class="stat-item">
+              <span class="stat-label">Poses detectadas:</span>
+              <span class="stat-value" id="poseCount">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Confianza:</span>
+              <span class="stat-value" id="confidence">-</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Estado:</span>
+              <span class="stat-value" id="status">Esperando...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desafíos Interactivos -->
+      <div id="challenges" class="challenges-section hidden">
+        <h2>🎮 Desafíos de Poses</h2>
+        <p>¡Intenta realizar estas poses y observa cómo la IA las detecta!</p>
+        <div class="challenge-grid">
+          <div class="challenge-card">
+            <span class="challenge-emoji">🙌</span>
+            <h4>Brazos Arriba</h4>
+            <p>Levanta ambos brazos hacia el cielo</p>
+          </div>
+          <div class="challenge-card">
+            <span class="challenge-emoji">🧘</span>
+            <h4>Pose de Yoga</h4>
+            <p>Intenta una postura de yoga</p>
+          </div>
+          <div class="challenge-card">
+            <span class="challenge-emoji">🏃</span>
+            <h4>Simulación de Carrera</h4>
+            <p>Simula que estás corriendo</p>
+          </div>
+          <div class="challenge-card">
+            <span class="challenge-emoji">⚖️</span>
+            <h4>Equilibrio</h4>
+            <p>Párate en un solo pie</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>💜 Desarrollado para ISTEduca - Curso de Inteligencia Artificial | 2026</p>
+    </footer>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
